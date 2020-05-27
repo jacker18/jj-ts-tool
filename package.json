@@ -1,0 +1,25 @@
+{
+  "name": "jj-ts-tool",
+  "version": "1.0.12",
+  "author": "Jacker",
+  "license": "MIT",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc --watch",
+    "build": "rmdir /s/q dist && tsc"
+  },
+  "bin": {
+    "jj-ts-tool": "dist/index.js"
+  },
+  "dependencies": {
+    "typescript-require": "^0.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.9",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.2"
+  }
+}
