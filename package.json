@@ -11,6 +11,7 @@
     "dev": "tsc --watch",
     "build": "rmdir /s/q dist && tsc"
   },
+  "keywords": ["typescript","vue","react","tool","typescript builder"],
   "bin": {
     "jj-ts-tool": "dist/index.js"
   },
