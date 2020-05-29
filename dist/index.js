@@ -37,24 +37,50 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var child_process_1 = require("child_process");
-require('typescript-require');
+var file_1 = require("./lib/file");
+var exec_1 = require("./lib/exec");
+require("typescript-require");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var arv, dir, dirArr;
+    var arv, isInputDir, dir, inputFileArr;
     return __generator(this, function (_a) {
-        arv = process.argv;
-        console.log(arv);
-        if (arv[2]) {
-            dir = arv[2].split('/');
-            dirArr = dir.slice(0, dir.length - 1).join('/');
-            if (arv[3]) {
-                child_process_1.exec("tsc " + arv[2] + " --outdir " + arv[3]);
-            }
-            else {
-                child_process_1.exec("tsc " + arv[2] + " --outdir " + dirArr + " ");
-            }
+        switch (_a.label) {
+            case 0:
+                arv = process.argv;
+                if (!arv[2]) return [3 /*break*/, 3];
+                isInputDir = false;
+                return [4 /*yield*/, file_1.default.isDir(arv[2])];
+            case 1:
+                isInputDir = _a.sent();
+                dir = arv[2].split("/");
+                inputFileArr = [];
+                return [4 /*yield*/, file_1.default.mapDir(arv[2])];
+            case 2:
+                inputFileArr = _a.sent();
+                if (isInputDir) {
+                    inputFileArr.forEach(function (e) {
+                        var suffix = e.substr(-3);
+                        if (suffix.indexOf(".ts") > -1) {
+                            if (arv[3]) {
+                                exec_1.default.startExec("tsc " + e + " --outdir " + arv[3]);
+                            }
+                            else {
+                                exec_1.default.startExec("tsc " + e);
+                            }
+                        }
+                    });
+                }
+                else {
+                    if (arv[3]) {
+                        exec_1.default.startExec("tsc " + arv[2] + " --outdir " + arv[3]);
+                    }
+                    else {
+                        // 再默认目录
+                        exec_1.default.startExec("tsc " + arv[2]);
+                    }
+                }
+                _a.label = 3;
+            case 3: return [2 /*return*/];
         }
-        return [2 /*return*/];
     });
 }); })();
 //# sourceMappingURL=index.js.map
