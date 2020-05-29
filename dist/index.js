@@ -41,7 +41,7 @@ var file_1 = require("./lib/file");
 var exec_1 = require("./lib/exec");
 require("typescript-require");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var arv, isInputDir, dir, inputFileArr, tsArr, tsStr;
+    var arv, isInputDir, inputFileArr, tsArr, tsStr;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -51,14 +51,12 @@ require("typescript-require");
                 return [4 /*yield*/, file_1.default.isDir(arv[2])];
             case 1:
                 isInputDir = _a.sent();
-                dir = arv[2].split("/");
                 inputFileArr = [];
                 return [4 /*yield*/, file_1.default.mapDir(arv[2])];
             case 2:
                 inputFileArr = _a.sent();
                 if (isInputDir) {
                     tsArr = inputFileArr.map(function (e) {
-                        console.log('目录', e, arv[3]);
                         var suffix = e.substr(-3);
                         if (suffix.indexOf(".ts") > -1) {
                             return e;
@@ -67,9 +65,7 @@ require("typescript-require");
                             return "";
                         }
                     });
-                    console.log('返回的值', tsArr, Array.toString());
-                    tsStr = tsArr.join(' ');
-                    console.log(tsStr);
+                    tsStr = tsArr.join(" ");
                     if (arv[3]) {
                         exec_1.default.startExec("tsc " + tsStr + " -outDir " + arv[3]);
                     }
