@@ -14,4 +14,4 @@ jj-ts-tool  编译文件地址  输出文件地址(可忽略)
 
 支持目标目录批量处理
 例如：jj-ts-tool ./src  不输入输出目录则在目标目录同级生成
-     jj-ts-tool ./src  ./dist 输入目标目录会在目标生成ts 输出的文件结构为同级
+     jj-ts-tool ./src  ./dist 输入目标目录会在目标生成ts

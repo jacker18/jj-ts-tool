@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 var file_1 = require("./lib/file");
 var exec_1 = require("./lib/exec");
 require("typescript-require");
@@ -48,12 +48,12 @@ require("typescript-require");
                 arv = process.argv;
                 if (!arv[2]) return [3 /*break*/, 3];
                 isInputDir = false;
-                return [4 /*yield*/, file_1.default.isDir(arv[2])];
+                return [4 /*yield*/, file_1["default"].isDir(arv[2])];
             case 1:
                 isInputDir = _a.sent();
                 dir = arv[2].split("/");
                 inputFileArr = [];
-                return [4 /*yield*/, file_1.default.mapDir(arv[2])];
+                return [4 /*yield*/, file_1["default"].mapDir(arv[2])];
             case 2:
                 inputFileArr = _a.sent();
                 if (isInputDir) {
@@ -71,19 +71,19 @@ require("typescript-require");
                     tsStr = tsArr.join(' ');
                     console.log(tsStr);
                     if (arv[3]) {
-                        exec_1.default.startExec("tsc " + tsStr + " -outDir " + arv[3]);
+                        exec_1["default"].startExec("tsc " + tsStr + " -outDir " + arv[3]);
                     }
                     else {
-                        exec_1.default.startExec("tsc " + tsStr);
+                        exec_1["default"].startExec("tsc " + tsStr);
                     }
                 }
                 else {
                     if (arv[3]) {
-                        exec_1.default.startExec("tsc " + arv[2] + " -outDir " + arv[3]);
+                        exec_1["default"].startExec("tsc " + arv[2] + " -outDir " + arv[3]);
                     }
                     else {
                         // 再默认目录
-                        exec_1.default.startExec("tsc " + arv[2]);
+                        exec_1["default"].startExec("tsc " + arv[2]);
                     }
                 }
                 _a.label = 3;
@@ -91,4 +91,3 @@ require("typescript-require");
         }
     });
 }); })();
-//# sourceMappingURL=index.js.map
